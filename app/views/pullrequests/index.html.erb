@@ -14,7 +14,7 @@
   <% @pullrequests.each do |item| %>
       <tr>
         <th><%=item.username%></th>
-        <th><%=item.ipserver%></th>
+        <th><a href="http://<%=item.ipserver %>" target="_blank"><%=item.ipserver%></a></th>
         <th style="width: 30%"><a href="<%=item.linkpullrequest %>"><%=item.linkpullrequest%></a></th>
         <th><%=raw(item.note) %></th>
       </tr>

@@ -1,6 +1,9 @@
 <%# navigation styled for Bootstrap 3.0 %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
+    <div class="navbar-header" style="width: 30px;padding-top: 10px;margin-right: 10px">
+      <%= image_tag("Logo.gif") %>
+    </div>
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -8,7 +11,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to 'Pull Request', pullrequests_path, class: 'navbar-brand' %>
+      <%= link_to 'VietGurus - Local Deployment Information', pullrequests_path, class: 'navbar-brand' %>
 
     </div>
     <!--<div class="collapse navbar-collapse">
