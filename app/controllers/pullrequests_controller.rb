@@ -9,6 +9,7 @@ class PullrequestsController < ApplicationController
 
   def create
     @pullrequest=Pullrequest.new(pull_params)
+    @pullrequest.username=@pullrequest.username.downcase.delete(' ')
     pullexsit=Pullrequest.find_by_username(@pullrequest.username)
     result=false;
     unless pullexsit.nil?
