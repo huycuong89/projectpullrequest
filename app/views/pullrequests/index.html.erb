@@ -1,0 +1,25 @@
+<div style="padding-top: 20px">
+  <%= link_to "Add P/R", new_pullrequest_path, :class => "btn btn-info", :id => "my-id" %>
+</div>
+<table class="table">
+<thead>
+<tr>
+  <th>Username</th>
+  <th>Ip server</th>
+  <th style="width: 30%">Link</th>
+  <th>Note</th>
+</tr>
+</thead>
+  <tbody>
+  <% @pullrequests.each do |item| %>
+      <tr>
+        <th><%=item.username%></th>
+        <th><%=item.ipserver%></th>
+        <th style="width: 30%"><a href="<%=item.linkpullrequest %>"><%=item.linkpullrequest%></a></th>
+        <th><%=raw(item.note) %></th>
+      </tr>
+  <%end %>
+  </tbody>
+</table>
+
+
