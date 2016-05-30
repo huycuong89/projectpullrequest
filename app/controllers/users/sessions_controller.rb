@@ -25,4 +25,11 @@ class Users::SessionsController < Devise::SessionsController
   def create
 
   end
+
+  def user_params
+    params.require(:user).permit(
+        :email,
+        :password,
+    )
+  end
 end
