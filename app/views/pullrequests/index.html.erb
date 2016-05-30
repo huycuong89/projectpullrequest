@@ -5,6 +5,7 @@
 <thead>
 <tr>
   <th>Username</th>
+  <th>Nick Name</th>
   <th>Ip server</th>
   <th style="width: 30%">Link</th>
   <th>Note</th>
@@ -15,17 +16,21 @@
   <% @pullrequests.each do |item| %>
       <tr>
         <th><%=item.username%></th>
+        <th><%=item.nickname%></th>
         <th><a href="http://<%=item.ipserver %>" target="_blank"><%=item.ipserver%></a></th>
         <th style="width: 30%"><a href="<%=item.linkpullrequest %>"><%=item.linkpullrequest%></a></th>
         <th><%=raw(item.note) %></th>
         <th>
-          <%- if item.user_id.present? %>
-              <%- if item.username.eql?(current_user.email) %>
+          <%- if current_user.present?%>
+              <%- if item.user_id.present? %>
+                  <%- if item.username.eql?(current_user.email) %>
+                      <%= link_to 'Delete', pullrequest_path(id:item.id), class: 'navbar-brand', :method => 'delete' %>
+                  <% end %>
+              <%- else %>
                   <%= link_to 'Delete', pullrequest_path(id:item.id), class: 'navbar-brand', :method => 'delete' %>
               <% end %>
-          <%- else %>
-              <%= link_to 'Delete', pullrequest_path(id:item.id), class: 'navbar-brand', :method => 'delete' %>
           <% end %>
+
         </th>
       </tr>
   <%end %>

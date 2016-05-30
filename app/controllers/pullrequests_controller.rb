@@ -22,6 +22,7 @@ class PullrequestsController < ApplicationController
   def create
     @pullrequest=Pullrequest.new(pull_params)
     @pullrequest.username=current_user.email
+    @pullrequest.nickname=current_user.nickname
     userid=User.find_by_email(@pullrequest.username).id
     pullexsit=Pullrequest.find_by_username(@pullrequest.username)
     @pullrequest.user_id=userid
@@ -31,8 +32,10 @@ class PullrequestsController < ApplicationController
       pullexsit.ipserver=@pullrequest.ipserver
       pullexsit.linkpullrequest=@pullrequest.linkpullrequest
       pullexsit.note=@pullrequest.note
+      pullexsit.nickname=@pullrequest.nickname
       result=pullexsit.update(updated_at: pullexsit.updated_at,ipserver: pullexsit.ipserver,
-                              linkpullrequest: pullexsit.linkpullrequest,note: pullexsit.note)
+                              linkpullrequest: pullexsit.linkpullrequest,note: pullexsit.note,
+                              nickname: pullexsit.nickname)
     else
       result=@pullrequest.save()
     end

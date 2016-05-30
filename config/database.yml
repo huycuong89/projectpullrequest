@@ -13,7 +13,7 @@ test:
 
 production:
   adapter: postgresql
-  database: pullrequest_production
+  database: pullrequest
   pool: 5
   timeout: 5000
 
