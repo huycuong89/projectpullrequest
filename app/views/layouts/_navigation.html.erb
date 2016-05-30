@@ -15,7 +15,7 @@
       <%- if user_signed_in? %>
           <%= link_to 'Sign out', destroy_user_session_path, class: 'navbar-brand', :method => 'delete' %>
           <%- else %>
-          <%= link_to 'Sign in with github', '/users/auth/github', class: 'navbar-brand' %>
+          <%= link_to 'Sign in with github', user_github_omniauth_authorize_path, class: 'navbar-brand' %>
       <%-end %>
 
 

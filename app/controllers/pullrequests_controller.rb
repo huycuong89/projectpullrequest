@@ -1,7 +1,7 @@
 class PullrequestsController < ApplicationController
   def new
     unless user_signed_in?
-      redirect_to new_user_session_path
+      redirect_to user_github_omniauth_authorize_path
     else
       @pullrequest=Pullrequest.new
     end
@@ -14,8 +14,13 @@ class PullrequestsController < ApplicationController
 
   def destroy
       pullrequestId=params[:id]
+      userLogin=User.find_by_email(current_user.email)
       pullrequest = Pullrequest.find_by(id: pullrequestId)
-      pullrequest.destroy
+      if userLogin.present?
+        if pullrequest.user_id.eql?(userLogin.id)
+          pullrequest.destroy
+        end
+      end
     redirect_to pullrequests_path
   end
 
